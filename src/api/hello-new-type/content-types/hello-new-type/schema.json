@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hello_new_types",
+  "info": {
+    "singularName": "hello-new-type",
+    "pluralName": "hello-new-types",
+    "displayName": "Hello New Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    },
+    "jsonTest": {
+      "type": "json"
+    }
+  }
+}
