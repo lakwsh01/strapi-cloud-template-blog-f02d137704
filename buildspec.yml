@@ -7,7 +7,6 @@ phases:
       - docker login -u AWS -p $(aws ecr get-login-password --region $AWS_REGION) $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
   build:
     commands:
-      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build --build-arg REVISION=$CODEBUILD_RESOLVED_SOURCE_VERSION --build-arg BUILD_NUMBER=$CODEBUILD_BUILD_ID -t $IMAGE_REPO_NAME:latest -f server/DockerfileAWS server/.
