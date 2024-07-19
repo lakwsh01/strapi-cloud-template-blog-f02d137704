@@ -13,3 +13,4 @@ phases:
       - docker push $IMAGE_REPO_NAME:$IMAGE_TAG
       - echo "Image pushed to ECR successfully!"
       - echo "Deploying the Docker image to ECS..."
+      - echo "Hello"
