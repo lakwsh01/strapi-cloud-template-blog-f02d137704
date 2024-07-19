@@ -6,6 +6,7 @@ phases:
   build:
     commands:
       - echo "Building Docker image..."
+      - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
   post_build:
     commands:
