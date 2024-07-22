@@ -29,8 +29,5 @@ EXPOSE 1337
 
 # Start the Strapi application
 CMD npm start
-<<<<<<< HEAD
 
 
-=======
->>>>>>> parent of c21d878 (t6)
