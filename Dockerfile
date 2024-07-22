@@ -29,3 +29,4 @@ EXPOSE 1337
 
 # Start the Strapi application
 CMD npm start
+
