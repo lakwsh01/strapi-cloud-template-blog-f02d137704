@@ -2,23 +2,18 @@
 FROM node:18-alpine
 
 # ARGUMENTS
-ARG NODE_ENV=production
-ENV HOST=0.0.0.0
-ENV PORT=1337
-ENV APP_KEYS="toBeModified1,toBeModified2"
-ENV API_TOKEN_SALT=tobemodified
-ENV ADMIN_JWT_SECRET=tobemodified
-ENV TRANSFER_TOKEN_SALT=tobemodified
-ENV JWT_SECRET=tobemodified
+ENV NODE_ENV production
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /usr/src/app
+
+RUN echo "{\"build_number\": \""${BUILD_NUMBER}"\", \"revision\": \""${REVISION}"\"}" > revision.json
 
 # Copy package.json and package-lock.json (if it exists)
-COPY package*.json ./
+COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 
 # Install dependencies - this layer will be cached if package*.json doesn't change
-RUN npm install
+RUN npm install --production --silent && mv node_modules ../
 
 # Copy the rest of your application code
 COPY . .
@@ -30,4 +25,6 @@ RUN npm run build
 EXPOSE 1337
 
 # Command to run when the container starts
-CMD ["npm", "run", "start"]  # Use "npm run develop" for development mode
+# CMD ["npm", "run", "start"]  # Use "npm run develop" for development mode
+
+CMD npm start
