@@ -24,6 +24,7 @@ RUN npm run build
 # Expose the port Strapi runs on
 EXPOSE 1337
 
+
 # Command to run when the container starts
 # CMD ["npm", "run", "start"]  # Use "npm run develop" for development mode
 
