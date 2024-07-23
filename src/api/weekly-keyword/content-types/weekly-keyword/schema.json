@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "weekly_keywords",
+  "info": {
+    "singularName": "weekly-keyword",
+    "pluralName": "weekly-keywords",
+    "displayName": "Weekly Keyword",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Heading": {
+      "type": "string",
+      "default": "見客冇話題？唔洗騰😎"
+    },
+    "Keyword": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.keyword"
+    },
+    "Subhead": {
+      "type": "string",
+      "default": "PORTFO+ 幫你整理一周關鍵字，幫你1秒打開話題。🚀"
+    },
+    "social_link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::social-link.social-link"
+    },
+    "Call_To_Action": {
+      "type": "string"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "weekly_keywords"
+    },
+    "Thumbnail": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

@@ -1,5 +1,44 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface BasicKeyValuePair extends Schema.Component {
+  collectionName: 'components_basic_key_value_pairs';
+  info: {
+    displayName: 'Key Value Pair';
+  };
+  attributes: {
+    Key: Attribute.String;
+    Value: Attribute.String;
+  };
+}
+
+export interface ContentKeyword extends Schema.Component {
+  collectionName: 'components_content_keywords';
+  info: {
+    displayName: 'Keyword';
+    description: '';
+  };
+  attributes: {
+    Keyword: Attribute.String;
+    Tags: Attribute.JSON & Attribute.CustomField<'plugin::tagsinput.tags'>;
+    Detail: Attribute.Text;
+    Image: Attribute.Media;
+    index: Attribute.Integer;
+  };
+}
+
+export interface ContentSocialLink extends Schema.Component {
+  collectionName: 'components_content_social_links';
+  info: {
+    displayName: 'Social Link';
+  };
+  attributes: {
+    Name: Attribute.String;
+    index: Attribute.Integer;
+    Link: Attribute.String;
+    Logo: Attribute.Media;
+  };
+}
+
 export interface SharedMedia extends Schema.Component {
   collectionName: 'components_shared_media';
   info: {
@@ -65,6 +104,9 @@ export interface SharedSlider extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'basic.key-value-pair': BasicKeyValuePair;
+      'content.keyword': ContentKeyword;
+      'content.social-link': ContentSocialLink;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

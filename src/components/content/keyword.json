@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_content_keywords",
+  "info": {
+    "displayName": "Keyword",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Keyword": {
+      "type": "string"
+    },
+    "Tags": {
+      "type": "customField",
+      "customField": "plugin::tagsinput.tags"
+    },
+    "Detail": {
+      "type": "text"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "index": {
+      "type": "integer"
+    }
+  }
+}
