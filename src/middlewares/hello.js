@@ -6,6 +6,7 @@ module.exports = (config, { strapi }) => {
             // react redircet to /admin
             context.response.redirect('/admin');
 
+
         }
         else {
             return next();
