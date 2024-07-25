@@ -21,6 +21,7 @@ COPY . .
 # Build your Strapi application for production
 RUN npm run build
 
+
 # Expose the port Strapi runs on
 EXPOSE 1337
 
