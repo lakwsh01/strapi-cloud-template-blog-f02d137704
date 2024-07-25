@@ -13,14 +13,14 @@ module.exports = ({ env }) => [
             "'self'",
             'data:',
             'blob:',
-            env('CDN_URL').replace('https://', 'http://'),
+            env('CDN_URL')?.replace('https://', 'http://'),
             `${env('AWS_BUCKET')}.s3.${env('AWS_REGION')}.amazonaws.com`
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
-            env('CDN_URL').replace('https://', 'http://'),
+            env('CDN_URL')?.replace('https://', 'http://'),
             `${env('AWS_BUCKET')}.s3.${env('AWS_REGION')}.amazonaws.com`],
           upgradeInsecureRequests: null,
         },
