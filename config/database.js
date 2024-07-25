@@ -75,6 +75,7 @@ module.exports = ({ env }) => {
           env('Node_ENV') == 'production' || env('IS_ABSOLUTE_DATABASE_PATH') ? '' : __dirname + '..',
           env('DATABASE_PATH', '.tmp'),
           env('DATABASE_NAME', 'data.db')
+
         )
       },
       useNullAsDefault: true,
