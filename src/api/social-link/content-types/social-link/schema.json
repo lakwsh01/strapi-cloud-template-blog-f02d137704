@@ -4,7 +4,8 @@
   "info": {
     "singularName": "social-link",
     "pluralName": "social-links",
-    "displayName": "Social Link"
+    "displayName": "Social Link",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,14 @@
       "type": "component",
       "repeatable": true,
       "component": "content.social-link"
+    },
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     }
   }
 }

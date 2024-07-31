@@ -9,8 +9,21 @@ module.exports = {
    * This gives you an opportunity to extend code.
    */
 
+  register({ strapi }) {
+    // console.log('strapi::: ', strapi)
+    // console.log('emailService::: ', emailService)
+    // console.log('emailService::: ', emailService.email)
 
-  register(/*{ strapi }*/) { },
+    // const emailService = strapi.plugins['email'].services
+    // console.log('emailService::: ', emailService.email.send)
+    // strapi.plugins['email'].services.email.send({
+    //   to: 'paul.portfoplus@gmail.com',
+    //   subject: 'Hello world',
+    //   text: 'Hello world',
+    //   html: `<h4>Hello world</h4>`,
+    // });
+    // console.log('Email sent');
+  },
 
 
   /**

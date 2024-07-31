@@ -3,11 +3,12 @@ import type { Schema, Attribute } from '@strapi/strapi';
 export interface BasicKeyValuePair extends Schema.Component {
   collectionName: 'components_basic_key_value_pairs';
   info: {
-    displayName: 'Key Value Pair';
+    displayName: 'key&value';
+    description: '';
   };
   attributes: {
-    Key: Attribute.String;
-    Value: Attribute.String;
+    key: Attribute.String;
+    value: Attribute.String;
   };
 }
 
@@ -18,10 +19,10 @@ export interface ContentKeyword extends Schema.Component {
     description: '';
   };
   attributes: {
-    Keyword: Attribute.String;
-    Tags: Attribute.JSON & Attribute.CustomField<'plugin::tagsinput.tags'>;
-    Detail: Attribute.Text;
-    Image: Attribute.Media;
+    keyword: Attribute.String;
+    tags: Attribute.JSON & Attribute.CustomField<'plugin::tagsinput.tags'>;
+    detail: Attribute.Text;
+    image: Attribute.Media;
     index: Attribute.Integer;
   };
 }

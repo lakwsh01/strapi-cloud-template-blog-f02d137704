@@ -1054,18 +1054,53 @@ export interface ApiHelloNewTypeHelloNewType extends Schema.CollectionType {
   };
 }
 
+export interface ApiPreviewSettingPreviewSetting extends Schema.SingleType {
+  collectionName: 'preview_settings';
+  info: {
+    singularName: 'preview-setting';
+    pluralName: 'preview-settings';
+    displayName: 'Preview Setting';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    entries: Attribute.Component<'basic.key-value-pair', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::preview-setting.preview-setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::preview-setting.preview-setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSocialLinkSocialLink extends Schema.CollectionType {
   collectionName: 'social_links';
   info: {
     singularName: 'social-link';
     pluralName: 'social-links';
     displayName: 'Social Link';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Link: Attribute.Component<'content.social-link', true>;
+    name: Attribute.String;
+    slug: Attribute.UID<'api::social-link.social-link', 'name'> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1084,6 +1119,52 @@ export interface ApiSocialLinkSocialLink extends Schema.CollectionType {
   };
 }
 
+export interface ApiTrTestTrTest extends Schema.CollectionType {
+  collectionName: 'tr_tests';
+  info: {
+    singularName: 'tr-test';
+    pluralName: 'tr-tests';
+    displayName: 'tr-test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    trt1: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tr-test.tr-test',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tr-test.tr-test',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::tr-test.tr-test',
+      'oneToMany',
+      'api::tr-test.tr-test'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiWeeklyKeywordWeeklyKeyword extends Schema.CollectionType {
   collectionName: 'weekly_keywords';
   info: {
@@ -1096,23 +1177,27 @@ export interface ApiWeeklyKeywordWeeklyKeyword extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Heading: Attribute.String &
+    heading: Attribute.String &
       Attribute.DefaultTo<'\u898B\u5BA2\u5187\u8A71\u984C\uFF1F\u5514\u6D17\u9A30\uD83D\uDE0E'>;
-    Keyword: Attribute.Component<'content.keyword', true>;
-    Subhead: Attribute.String &
+    keyword: Attribute.Component<'content.keyword', true>;
+    subhead: Attribute.String &
       Attribute.DefaultTo<'PORTFO+ \u5E6B\u4F60\u6574\u7406\u4E00\u5468\u95DC\u9375\u5B57\uFF0C\u5E6B\u4F601\u79D2\u6253\u958B\u8A71\u984C\u3002\uD83D\uDE80'>;
     social_link: Attribute.Relation<
       'api::weekly-keyword.weekly-keyword',
       'oneToOne',
       'api::social-link.social-link'
     >;
-    Call_To_Action: Attribute.String;
     author: Attribute.Relation<
       'api::weekly-keyword.weekly-keyword',
       'manyToOne',
       'api::author.author'
     >;
-    Thumbnail: Attribute.Media;
+    call_to_action: Attribute.String;
+    action: Attribute.String;
+    closing: Attribute.String &
+      Attribute.DefaultTo<'\u5E36\u4F4F\u4EE5\u4E0A\u5E7E\u500B\u95DC\u9375\u5B57\uFF0C\u540C\u5BA2\u6236\u6253\u958B\u8A71\u984C\u5187\u96E3\u5EA6\uFF01 \uD83D\uDD11\uD83D\uDCAC'>;
+    vol: Attribute.String;
+    preview: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1156,7 +1241,9 @@ declare module '@strapi/types' {
       'api::footer.footer': ApiFooterFooter;
       'api::global.global': ApiGlobalGlobal;
       'api::hello-new-type.hello-new-type': ApiHelloNewTypeHelloNewType;
+      'api::preview-setting.preview-setting': ApiPreviewSettingPreviewSetting;
       'api::social-link.social-link': ApiSocialLinkSocialLink;
+      'api::tr-test.tr-test': ApiTrTestTrTest;
       'api::weekly-keyword.weekly-keyword': ApiWeeklyKeywordWeeklyKeyword;
     }
   }

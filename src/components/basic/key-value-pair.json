@@ -1,14 +1,15 @@
 {
   "collectionName": "components_basic_key_value_pairs",
   "info": {
-    "displayName": "Key Value Pair"
+    "displayName": "key&value",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Key": {
+    "key": {
       "type": "string"
     },
-    "Value": {
+    "value": {
       "type": "string"
     }
   }

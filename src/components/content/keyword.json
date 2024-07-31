@@ -6,17 +6,17 @@
   },
   "options": {},
   "attributes": {
-    "Keyword": {
+    "keyword": {
       "type": "string"
     },
-    "Tags": {
+    "tags": {
       "type": "customField",
       "customField": "plugin::tagsinput.tags"
     },
-    "Detail": {
+    "detail": {
       "type": "text"
     },
-    "Image": {
+    "image": {
       "type": "media",
       "multiple": false,
       "required": false,
